@@ -2,6 +2,13 @@ import { projects } from "@/lib/data";
 import { notFound } from "next/navigation";
 import CategoryClient from "./category-client";
 
+export function generateStaticParams() {
+  return [
+    { category: "ux-ui-design" },
+    { category: "brand-design" },
+  ];
+}
+
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
   

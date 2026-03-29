@@ -2,6 +2,12 @@ import { projects } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ProjectClient from "./project-client";
 
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
 export default async function ProjectPage({ 
   params 
 }: { 
