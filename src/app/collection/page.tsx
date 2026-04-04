@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { p } from "@/lib/base-path";
 
 const categories = [
   {
@@ -54,7 +54,7 @@ export default function CollectionPage() {
                   }}
                   className="absolute -left-12 top-[10%] w-[35vw] h-[70vh] opacity-50"
                 >
-                  <Image src="/mockups/iphone_1.png" alt="" fill className="object-contain" priority />
+                  <img src={p("/mockups/iphone_1.png")} alt="" className="object-contain w-full h-full" />
                 </motion.div>
                 
                 <motion.div 
@@ -64,7 +64,7 @@ export default function CollectionPage() {
                   }}
                   className="absolute -right-12 bottom-[10%] w-[35vw] h-[70vh] opacity-50"
                 >
-                  <Image src="/mockups/iphone_2.png" alt="" fill className="object-contain" priority />
+                  <img src={p("/mockups/iphone_2.png")} alt="" className="object-contain w-full h-full" />
                 </motion.div>
           </div>
 
