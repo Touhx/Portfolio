@@ -2,18 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { Project } from "@/types/project";
 
 interface HausOfTasteProps {
-  project: any;
+  project: Project;
 }
 
 /* ─── animation helpers ─── */
-const fadeUp = {
+import type { Variants } from "framer-motion";
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } },
 };
-const stagger = {
+const stagger: Variants = {
+  hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
 
@@ -45,14 +48,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
           backgroundPosition: 'center'
         }}
       >
-        {/* Back button fixed overlay */}
-        <div className="absolute top-8 left-6 md:left-12 z-50 mix-blend-difference">
-          <Link href="/collection" className="text-white hover:text-white/70 transition-colors flex items-center gap-2 text-[10px] tracking-widest uppercase border border-white/20 px-4 py-2 rounded-full">
-            <ArrowLeft className="w-3 h-3" /> Back
-          </Link>
-        </div>
-
-        {/* Background Text */}
+{/* Background Text */}
         <motion.div 
             className="absolute whitespace-nowrap z-0 select-none pointer-events-none"
             initial={{ opacity: 0 }}

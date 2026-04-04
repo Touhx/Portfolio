@@ -1,21 +1,24 @@
-export const projects = [
+import { Project } from "@/types/project";
+
+export const projects: Project[] = [
   {
     id: "01",
     slug: "haus-of-taste",
     title: "HAUS OF TASTE",
     category: "UX/UI Design",
     bgText: "Haus Of Taste",
-    bgColor: "#151b22", 
+    bgColor: "#151b22",
     imgLeftTilted: true,
     titleImage: "/mockups/hot-logo.png",
     customBg: "/mockups/hot-bg.png",
     centerImage: "/mockups/hot-iphone.png",
+    layout: "case-study",
     details: {
       role: "Lead UX/UI Designer",
       tools: ["Figma", "Adobe CC", "Framer"],
       year: "2024",
-      platforms: ["iOS", "Android"]
-    }
+      platforms: ["iOS", "Android"],
+    },
   },
   {
     id: "02",
@@ -23,8 +26,9 @@ export const projects = [
     title: "GREEN BUTCHER",
     category: "Brand Design",
     bgText: "GREEN",
-    bgColor: "#1f2a1e", 
+    bgColor: "#1f2a1e",
     imgLeftTilted: false,
+    layout: "hero",
   },
   {
     id: "03",
@@ -34,6 +38,7 @@ export const projects = [
     bgText: "USER EXP",
     bgColor: "#0a0a0a",
     imgLeftTilted: true,
+    layout: "hero",
   },
   {
     id: "04",
@@ -43,5 +48,6 @@ export const projects = [
     bgText: "JOSEPH",
     bgColor: "#eaaa00",
     imgLeftTilted: false,
-  }
+    layout: "hero",
+  },
 ];
