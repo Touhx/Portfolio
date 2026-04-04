@@ -22,8 +22,8 @@ const stagger: Variants = {
 };
 
 /* ─── brand colours (matched from Figma) ─── */
-const RED      = "#E8380D"; // exact Figma red-orange
-const CREAM    = "#F0EBE3"; // Figma off-white/cream background
+const RED = "#E8380D"; // exact Figma red-orange
+const CREAM = "#F0EBE3"; // Figma off-white/cream background
 const DARK_NAV = "#1A1E26"; // Figma dark navy for headings & text
 
 export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
@@ -43,63 +43,63 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
           ═══════════════════════════════════════════ */}
       <section
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
-        style={{ 
+        style={{
           backgroundImage: project.customBg ? `url(${project.customBg})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
-{/* Background Text */}
-        <motion.div 
-            className="absolute whitespace-nowrap z-0 select-none pointer-events-none"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+        {/* Background Text */}
+        <motion.div
+          className="absolute whitespace-nowrap z-0 select-none pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         >
-            <h2 className="text-[20vw] font-black uppercase text-transparent tracking-tighter" 
-                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.05)" }}>
+          <h2 className="text-[20vw] font-black uppercase text-transparent tracking-tighter"
+            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.05)" }}>
             {project.bgText}
-            </h2>
+          </h2>
         </motion.div>
 
         {/* Center Image Mockup */}
         {project.centerImage && (
-            <motion.div 
+          <motion.div
             className="absolute z-10 w-[280px] md:w-[400px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: "-50%", opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            >
+          >
             <img src={project.centerImage} alt={project.title} className="w-full h-full object-contain" />
-            </motion.div>
+          </motion.div>
         )}
 
         {/* Title Image */}
         <div className="relative z-20 text-center pointer-events-none flex flex-col items-center px-12 md:mt-24">
-            {project.titleImage ? (
-                <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="w-[60vw] md:w-[35vw] max-w-[500px]"
-                >
-                    <img src={project.titleImage} alt={project.title} className="w-full h-auto" />
-                </motion.div>
-            ) : (
-                <motion.h1 
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-6xl md:text-[8vw] font-black uppercase tracking-tighter text-white leading-[0.85]"
-                >
-                    {project.title}
-                </motion.h1>
-            )}
+          {project.titleImage ? (
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="w-[60vw] md:w-[35vw] max-w-[500px]"
+            >
+              <img src={project.titleImage} alt={project.title} className="w-full h-auto" />
+            </motion.div>
+          ) : (
+            <motion.h1
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-[8vw] font-black uppercase tracking-tighter text-white leading-[0.85]"
+            >
+              {project.title}
+            </motion.h1>
+          )}
         </div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 mix-blend-difference text-white"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 text-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
@@ -122,7 +122,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
           ═══════════════════════════════════════════ */}
       <section className="relative w-full z-20">
         {/* Top wood background area */}
-        <div 
+        <div
           className="w-full h-[400px] md:h-[500px]"
           style={{
             backgroundImage: `url('${p("/case-study/flat-lay-composition-mexican-food-with-copyspace_23-2148140316.jpg")}')`,
@@ -136,22 +136,22 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
 
         {/* The Cream block that comes up and rounds */}
         <div className="relative bg-[#FAF6F0] rounded-t-[3rem] md:rounded-t-[4rem] -mt-24 md:-mt-32 pt-20 md:pt-32 pb-40 px-6 md:px-16 mx-auto shadow-2xl z-30">
-          
+
           {/* Overlapping Phone */}
           <div className="absolute left-1/2 -translate-x-1/2 -top-40 md:-top-72 z-40">
-            <motion.img 
+            <motion.img
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              src={p("/images/iPhone 17 - 7.png")} 
-              alt="App Screen" 
-              className="w-[280px] md:w-[320px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)] rounded-[2.5rem]" 
+              src={p("/images/iPhone 17 - 7.png")}
+              alt="App Screen"
+              className="w-[280px] md:w-[320px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)] rounded-[2.5rem]"
             />
           </div>
 
           <div className="max-w-6xl mx-auto flex flex-col pt-40 md:pt-64">
-            
+
             {/* Top metadata row */}
             <div className="flex flex-col md:flex-row justify-between items-start gap-12 w-full text-xs md:text-sm font-semibold tracking-wide text-[#808080] relative z-10 font-poppins">
               <div className="space-y-1.5 md:w-1/2">
@@ -168,15 +168,15 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
 
             {/* Huge Center Heading */}
             <div className="text-center mt-20 md:mt-32 mb-12">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="text-5xl md:text-[6rem] lg:text-[7.5rem] font-bold text-[#273038] leading-[1.05] tracking-tight"
                 style={{ fontWeight: 700 }}
               >
-                The App<br/>
-                Designed for<br/>
+                The App<br />
+                Designed for<br />
                 Dates.
               </motion.h2>
             </div>
@@ -510,11 +510,10 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: parseInt(item.step) * 0.1 }}
-                className={`p-7 rounded-2xl text-center shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  item.active
+                className={`p-7 rounded-2xl text-center shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.active
                     ? 'text-white'
                     : 'bg-[#F5F5F5] text-gray-900'
-                }`}
+                  }`}
                 style={item.active ? { background: RED } : {}}
               >
                 <span className={`block text-[10px] uppercase font-black tracking-widest mb-2 ${item.active ? 'text-white/60' : 'text-gray-400'}`}>
