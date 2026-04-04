@@ -1,4 +1,5 @@
 import { Project } from "@/types/project";
+import { p } from "@/lib/base-path";
 
 export const projects: Project[] = [
   {
@@ -9,9 +10,9 @@ export const projects: Project[] = [
     bgText: "Haus Of Taste",
     bgColor: "#151b22",
     imgLeftTilted: true,
-    titleImage: "/mockups/hot-logo.png",
-    customBg: "/mockups/hot-bg.png",
-    centerImage: "/mockups/hot-iphone.png",
+    titleImage: p("/mockups/hot-logo.png"),
+    customBg: p("/mockups/hot-bg.png"),
+    centerImage: p("/mockups/hot-iphone.png"),
     layout: "case-study",
     details: {
       role: "Lead UX/UI Designer",
@@ -51,3 +52,4 @@ export const projects: Project[] = [
     layout: "hero",
   },
 ];
+

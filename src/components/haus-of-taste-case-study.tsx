@@ -1,15 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import Link from "next/link";
 import { Project } from "@/types/project";
+import { p } from "@/lib/base-path";
 
 interface HausOfTasteProps {
   project: Project;
 }
 
 /* ─── animation helpers ─── */
-import type { Variants } from "framer-motion";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -26,7 +27,7 @@ const CREAM    = "#F0EBE3"; // Figma off-white/cream background
 const DARK_NAV = "#1A1E26"; // Figma dark navy for headings & text
 
 export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
-  const screens = Array.from({ length: 11 }, (_, i) => `/images/iPhone 17 - ${i + 1}.png`);
+  const screens = Array.from({ length: 11 }, (_, i) => p(`/images/iPhone 17 - ${i + 1}.png`));
 
   return (
     <div
@@ -124,7 +125,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
         <div 
           className="w-full h-[400px] md:h-[500px]"
           style={{
-            backgroundImage: "url('/case-study/flat-lay-composition-mexican-food-with-copyspace_23-2148140316.jpg')",
+            backgroundImage: `url('${p("/case-study/flat-lay-composition-mexican-food-with-copyspace_23-2148140316.jpg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -143,7 +144,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              src="/images/iPhone 17 - 7.png" 
+              src={p("/images/iPhone 17 - 7.png")} 
               alt="App Screen" 
               className="w-[280px] md:w-[320px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)] rounded-[2.5rem]" 
             />
@@ -234,12 +235,12 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                src="/images/iPhone 17 - 4.png"
+                src={p("/images/iPhone 17 - 4.png")}
                 alt="Mood filter screen"
                 className="w-48 md:w-56 z-20 drop-shadow-2xl rounded-[2rem]"
               />
               <img
-                src="/case-study/spring-bright-soup-with-meatballs-vegetables-copy-space_127032-2938.jpg"
+                src={p("/case-study/spring-bright-soup-with-meatballs-vegetables-copy-space_127032-2938.jpg")}
                 alt="Food"
                 className="absolute right-0 top-0 w-36 h-44 object-cover rounded-2xl shadow-lg z-10"
               />
@@ -261,7 +262,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 whileInView={{ rotate: -8, y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                src="/case-study/Iphone blk1.png"
+                src={p("/case-study/Iphone blk1.png")}
                 alt="Phone mockup"
                 className="absolute left-[5%] w-44 md:w-52 drop-shadow-2xl z-10"
               />
@@ -270,7 +271,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 whileInView={{ rotate: 5, y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.15 }}
-                src="/case-study/Iphone blk2.png"
+                src={p("/case-study/Iphone blk2.png")}
                 alt="Phone mockup"
                 className="absolute right-[5%] w-44 md:w-52 drop-shadow-2xl z-20"
               />
@@ -319,7 +320,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
               whileInView={{ y: 0, rotate: -12, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              src="/case-study/Iphone sc resturant.png"
+              src={p("/case-study/Iphone sc resturant.png")}
               className="absolute left-[5%] md:left-[15%] bottom-0 w-40 md:w-60 drop-shadow-2xl z-10 rounded-2xl"
               alt="Restaurant screen"
             />
@@ -328,7 +329,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              src="/case-study/Iphone sc resturant2.png"
+              src={p("/case-study/Iphone sc resturant2.png")}
               className="z-30 w-48 md:w-72 drop-shadow-[0_30px_60px_rgba(0,0,0,0.4)] rounded-2xl"
               alt="Restaurant detail"
             />
@@ -337,7 +338,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
               whileInView={{ y: 0, rotate: 12, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              src="/case-study/Iphone sc resturant3.png"
+              src={p("/case-study/Iphone sc resturant3.png")}
               className="absolute right-[5%] md:right-[15%] bottom-0 w-40 md:w-60 drop-shadow-2xl z-10 rounded-2xl"
               alt="Restaurant booking"
             />
@@ -392,7 +393,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
             transition={{ duration: 0.8 }}
             className="bg-white rounded-[2rem] p-6 md:p-10 shadow-2xl"
           >
-            <img src="/case-study/diagra.png" alt="Research Process Diagram" className="w-full h-auto" />
+            <img src={p("/case-study/diagra.png")} alt="Research Process Diagram" className="w-full h-auto" />
           </motion.div>
         </div>
       </section>
@@ -413,7 +414,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 className="flex-shrink-0 snap-center"
               >
                 <img
-                  src={`/images/iPhone 17 - ${num}.png`}
+                  src={p(`/images/iPhone 17 - ${num}.png`)}
                   alt={`Screen ${num}`}
                   className="h-[400px] md:h-[500px] w-auto rounded-[2rem] shadow-2xl"
                 />
@@ -529,7 +530,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
             {[9, 10, 11, 4, 5].map((num) => (
               <img
                 key={num}
-                src={`/images/iPhone 17 - ${num}.png`}
+                src={p(`/images/iPhone 17 - ${num}.png`)}
                 alt={`Flow screen ${num}`}
                 className="h-[280px] md:h-[350px] w-auto rounded-2xl shadow-lg flex-shrink-0"
               />
@@ -605,9 +606,9 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { before: '/images/iPhone 17 - 3.png', after: '/images/iPhone 17 - 4.png', label: 'Home Feed' },
-              { before: '/images/iPhone 17 - 6.png', after: '/images/iPhone 17 - 7.png', label: 'Restaurant View' },
-              { before: '/images/iPhone 17 - 9.png', after: '/images/iPhone 17 - 10.png', label: 'Booking Flow' },
+              { before: p('/images/iPhone 17 - 3.png'), after: p('/images/iPhone 17 - 4.png'), label: 'Home Feed' },
+              { before: p('/images/iPhone 17 - 6.png'), after: p('/images/iPhone 17 - 7.png'), label: 'Restaurant View' },
+              { before: p('/images/iPhone 17 - 9.png'), after: p('/images/iPhone 17 - 10.png'), label: 'Booking Flow' },
             ].map((pair, i) => (
               <motion.div
                 key={i}
