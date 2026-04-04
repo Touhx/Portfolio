@@ -28,181 +28,179 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
   return (
     <div
       className="text-black overflow-x-hidden selection:bg-[#E8380D] selection:text-white"
-      style={{ fontFamily: "'Inter', 'Plus Jakarta Sans', sans-serif" }}
+      style={{ fontFamily: "'Poppins', sans-serif" }}
     >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+      `}</style>
 
       {/* ═══════════════════════════════════════════
-          SECTION 1 — FIGMA HERO: Cream bg + giant heading
+          SECTION 1 — COLLECTION STYLE HERO
           ═══════════════════════════════════════════ */}
       <section
-        className="relative min-h-screen overflow-hidden"
-        style={{
-          backgroundColor: CREAM,
-          backgroundImage: `radial-gradient(circle, #c5b9ae 1px, transparent 1px)`,
-          backgroundSize: "24px 24px",
+        className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
+        style={{ 
+          backgroundImage: project.customBg ? `url(${project.customBg})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
         }}
       >
-        {/* ── Minimal top nav ── */}
-        <nav className="flex items-center justify-between px-8 md:px-16 py-7">
-          <Link
-            href="/collection"
-            className="flex items-center gap-2 text-[13px] font-semibold tracking-wide"
-            style={{ color: DARK_NAV }}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>Vision Titans Pty</span>
+        {/* Back button fixed overlay */}
+        <div className="absolute top-8 left-6 md:left-12 z-50 mix-blend-difference">
+          <Link href="/collection" className="text-white hover:text-white/70 transition-colors flex items-center gap-2 text-[10px] tracking-widest uppercase border border-white/20 px-4 py-2 rounded-full">
+            <ArrowLeft className="w-3 h-3" /> Back
           </Link>
-          <span className="text-[13px] font-semibold" style={{ color: DARK_NAV }}>
-            <span className="text-gray-400 mr-1">Date:</span> 2026
-          </span>
-        </nav>
-
-        {/* ── Hero content ── */}
-        <div className="max-w-6xl mx-auto px-8 md:px-16 pt-10 pb-24 md:pb-36">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-            className="max-w-[820px]"
-          >
-            {/* Giant heading */}
-            <motion.h1
-              variants={fadeUp}
-              className="leading-[0.9] tracking-tight mb-10"
-              style={{
-                fontSize: "clamp(72px, 11vw, 148px)",
-                fontWeight: 900,
-                color: DARK_NAV,
-                fontFamily: "'Inter', 'Plus Jakarta Sans', sans-serif",
-              }}
-            >
-              Designed<br />for Dates.
-            </motion.h1>
-
-            {/* Subtitle row */}
-            <motion.p
-              variants={fadeUp}
-              className="text-base md:text-lg leading-relaxed max-w-xl"
-              style={{ color: "#5a5a5a" }}
-            >
-              <span className="font-bold" style={{ color: RED }}>Haus of Taste</span>{" "}
-              is a mobile application designed to turn emotional intent into curated dining experiences.
-            </motion.p>
-          </motion.div>
-
-          {/* Client / Date metadata */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex gap-16 mt-16 pt-8 border-t"
-            style={{ borderColor: "#d5cdc4" }}
-          >
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: "#999" }}>Client</p>
-              <p className="text-sm font-semibold" style={{ color: DARK_NAV }}>Vision Titans Pty</p>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: "#999" }}>Date</p>
-              <p className="text-sm font-semibold" style={{ color: DARK_NAV }}>2026</p>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: "#999" }}>Role</p>
-              <p className="text-sm font-semibold" style={{ color: DARK_NAV }}>UX/UI Designer & Researcher</p>
-            </div>
-          </motion.div>
         </div>
+
+        {/* Background Text */}
+        <motion.div 
+            className="absolute whitespace-nowrap z-0 select-none pointer-events-none"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+        >
+            <h2 className="text-[20vw] font-black uppercase text-transparent tracking-tighter" 
+                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.05)" }}>
+            {project.bgText}
+            </h2>
+        </motion.div>
+
+        {/* Center Image Mockup */}
+        {project.centerImage && (
+            <motion.div 
+            className="absolute z-10 w-[280px] md:w-[400px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: "-50%", opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            >
+            <img src={project.centerImage} alt={project.title} className="w-full h-full object-contain" />
+            </motion.div>
+        )}
+
+        {/* Title Image */}
+        <div className="relative z-20 text-center pointer-events-none flex flex-col items-center px-12 md:mt-24">
+            {project.titleImage ? (
+                <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="w-[60vw] md:w-[35vw] max-w-[500px]"
+                >
+                    <img src={project.titleImage} alt={project.title} className="w-full h-auto" />
+                </motion.div>
+            ) : (
+                <motion.h1 
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-6xl md:text-[8vw] font-black uppercase tracking-tighter text-white leading-[0.85]"
+                >
+                    {project.title}
+                </motion.h1>
+            )}
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 mix-blend-difference text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <div className="flex flex-col items-center gap-4">
+            <span className="text-[10px] tracking-widest uppercase">Scroll to explore</span>
+            <div className="w-[1px] h-12 bg-white/30 overflow-hidden relative">
+              <motion.div
+                className="absolute top-0 w-full h-1/2 bg-white"
+                animate={{ y: [0, 48] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              />
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 2 — RED card: "Designed for the Moment"
+          SECTION 2 — INTRO & METADATA
           ═══════════════════════════════════════════ */}
-      <section
-        className="relative overflow-hidden"
-        style={{ backgroundColor: RED }}
-      >
-        <div className="max-w-6xl mx-auto px-8 md:px-16 py-20 md:py-28">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            {/* Left: giant white heading */}
-            <motion.div
-              initial={{ x: -40, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="md:w-1/2"
-            >
-              <h2
-                className="leading-[0.88] tracking-tight text-white"
-                style={{
-                  fontSize: "clamp(60px, 9vw, 120px)",
-                  fontWeight: 900,
-                  fontFamily: "'Inter', 'Plus Jakarta Sans', sans-serif",
-                }}
-              >
-                Designed<br />for the<br />Moment.
-              </h2>
-            </motion.div>
+      <section className="relative w-full z-20">
+        {/* Top wood background area */}
+        <div 
+          className="w-full h-[400px] md:h-[500px]"
+          style={{
+            backgroundImage: "url('/case-study/flat-lay-composition-mexican-food-with-copyspace_23-2148140316.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Overlay to dim slightly if needed, or leave clear as per design */}
+          <div className="absolute inset-0 bg-white/10" />
+        </div>
 
-            {/* Right: phone mockup */}
-            <motion.div
-              initial={{ y: 40, opacity: 0 }}
+        {/* The Cream block that comes up and rounds */}
+        <div className="relative bg-[#FAF6F0] rounded-t-[3rem] md:rounded-t-[4rem] -mt-24 md:-mt-32 pt-20 md:pt-32 pb-40 px-6 md:px-16 mx-auto shadow-2xl z-30">
+          
+          {/* Overlapping Phone */}
+          <div className="absolute left-1/2 -translate-x-1/2 -top-40 md:-top-72 z-40">
+            <motion.img 
+              initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.1 }}
-              className="md:w-1/2 flex justify-center"
-            >
-              <img
-                src="/images/iPhone 17 - 7.png"
-                alt="Haus of Taste app screen"
-                className="w-full max-w-[280px] md:max-w-[340px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)] rounded-[2.5rem]"
-              />
-            </motion.div>
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              src="/images/iPhone 17 - 7.png" 
+              alt="App Screen" 
+              className="w-[280px] md:w-[320px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.5)] rounded-[2.5rem]" 
+            />
           </div>
-        </div>
-      </section>
 
-      {/* ═══════════════════════════════════════════
-          SECTION 3 — RED: "DESIGNED FOR THE MOMENT"
-          ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ background: RED }}>
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            {/* Left: typography */}
-            <motion.div
-              initial={{ x: -40, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="md:w-1/2"
-            >
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight">
-                Designed<br />
-                for the<br />
-                Moment.
-              </h2>
-            </motion.div>
+          <div className="max-w-6xl mx-auto flex flex-col pt-40 md:pt-64">
+            
+            {/* Top metadata row */}
+            <div className="flex flex-col md:flex-row justify-between items-start gap-12 w-full text-xs md:text-sm font-semibold tracking-wide text-[#808080] relative z-10 font-poppins">
+              <div className="space-y-1.5 md:w-1/2">
+                <p><span className="text-[#3A4045] font-bold mr-2">Project:</span> Haus Of Taste</p>
+                <p><span className="text-[#3A4045] font-bold mr-2">Role:</span> UX/UI Designer & Researcher</p>
+                <p><span className="text-[#3A4045] font-bold mr-2">Researcher Timeline:</span> 6 Weeks</p>
+                <p><span className="text-[#3A4045] font-bold mr-2">Platform:</span> iOS & Android Mobile App</p>
+              </div>
+              <div className="space-y-1.5 md:w-1/2 md:text-right">
+                <p><span className="text-[#3A4045] font-bold mr-2">UI/UX Designer:</span> Thabo Dlamini</p>
+                <p><span className="text-[#3A4045] font-bold mr-2">Developer:</span> Mayibonwe Sibanda</p>
+              </div>
+            </div>
 
-            {/* Right: phone + food composition */}
-            <div className="md:w-1/2 relative h-[400px] md:h-[500px] flex items-center justify-center">
-              <motion.img
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+            {/* Huge Center Heading */}
+            <div className="text-center mt-20 md:mt-32 mb-12">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                src="/images/iPhone 17 - 7.png"
-                alt="App restaurant screen"
-                className="absolute z-20 w-44 md:w-56 left-[10%] top-[5%] drop-shadow-2xl rounded-[2rem]"
-              />
-              <img
-                src="/case-study/delicious-breakfast-meal-composition-with-copy-space_23-2148878843.jpg"
-                alt="Food"
-                className="absolute z-10 w-48 md:w-64 right-[5%] top-[10%] rounded-3xl object-cover h-56 md:h-72 shadow-2xl"
-              />
-              <img
-                src="/case-study/flat-lay-composition-mexican-food-with-copyspace_23-2148140316.jpg"
-                alt="Food"
-                className="absolute z-0 w-32 md:w-44 right-[30%] bottom-[5%] rounded-2xl object-cover h-36 md:h-48 shadow-xl opacity-80"
-              />
+                className="text-5xl md:text-[6rem] lg:text-[7.5rem] font-bold text-[#273038] leading-[1.05] tracking-tight"
+                style={{ fontWeight: 700 }}
+              >
+                The App<br/>
+                Designed for<br/>
+                Dates.
+              </motion.h2>
+            </div>
+
+            {/* Description Text */}
+            <div className="max-w-xl mx-auto text-center mb-24 md:mb-32">
+              <p className="text-[#5A5A5A] text-sm md:text-base font-medium leading-relaxed">
+                <span className="text-[#E8380D] font-bold">Haus of Taste</span> is a mobile application designed to turn emotional intent into curated dining experiences.
+              </p>
+            </div>
+
+            {/* Bottom metadata row */}
+            <div className="flex justify-between items-end w-full text-xs md:text-sm font-semibold text-[#808080] tracking-wide relative z-10">
+              <div className="space-y-1">
+                <p className="text-[#3A4045] font-bold">Client:</p>
+                <p>Vision Titans Pty</p>
+              </div>
+              <div className="space-y-1 text-right flex items-center gap-6">
+                <span className="text-[#3A4045] font-bold">Date:</span>
+                <span>2026</span>
+              </div>
             </div>
           </div>
         </div>
