@@ -3,15 +3,20 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import HausOfTasteCaseStudy from "@/components/haus-of-taste-case-study";
 
 export default function ProjectClient({ project }: { project: any }) {
+  if (project.slug === "stat-metrix") {
+    return <HausOfTasteCaseStudy project={project} />;
+  }
+
   return (
     <div 
       className="min-h-[100vh] mt-24 relative overflow-hidden flex items-center justify-center transition-colors duration-1000"
       style={{ backgroundColor: project.bgColor }}
     >
       <div className="absolute top-8 left-8 z-50 mix-blend-difference">
-        <Link href="/collection" className="text-white hover:text-white/50 transition-colors flex items-center gap-2 text-xs tracking-widest uppercase border border-white/20 px-6 py-2 rounded-full">
+        <Link href="/collection" className="text-white hover:text-white/80 transition-colors flex items-center gap-2 text-xs tracking-widest uppercase border border-white/20 px-6 py-2 rounded-full">
           <ArrowLeft className="w-4 h-4" /> Back to Collection
         </Link>
       </div>

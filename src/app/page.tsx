@@ -58,7 +58,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.8 }}
           className="absolute bottom-12 md:bottom-24 left-6 md:left-12 max-w-sm hidden md:block"
         >
-          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+          <p className="text-white/80 text-sm md:text-base leading-relaxed">
             Get Your Visual Fix: Where Luxury Meets <br/>
             Digital Craftsmanship in Design.
           </p>
@@ -86,10 +86,10 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.8 }}
           className="absolute bottom-12 md:bottom-24 right-6 md:right-12 flex gap-6 text-xs font-bold tracking-widest text-white"
         >
-          <span className="cursor-pointer hover:text-gray-400 transition-colors">IG</span>
-          <span className="cursor-pointer hover:text-gray-400 transition-colors">TW</span>
-          <span className="cursor-pointer hover:text-gray-400 transition-colors">FB</span>
-          <span className="cursor-pointer hover:text-gray-400 transition-colors">LI</span>
+          <span className="cursor-pointer hover:text-white/50 transition-colors">IG</span>
+          <span className="cursor-pointer hover:text-white/50 transition-colors">TW</span>
+          <span className="cursor-pointer hover:text-white/50 transition-colors">FB</span>
+          <span className="cursor-pointer hover:text-white/50 transition-colors">LI</span>
         </motion.div>
       </section>
 
@@ -110,7 +110,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
+            className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto"
            >
              Discover a curated selection of premium design projects that push the boundaries of digital and physical aesthetic appeal. Projects to be loaded here.
            </motion.p>

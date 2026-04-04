@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
   {
@@ -44,6 +45,29 @@ export default function CollectionPage() {
       <div ref={containerRef} className="h-[200vh] relative">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           
+          {/* Floating Background Mockups */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <motion.div 
+                  style={{ 
+                    y: useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]),
+                    rotate: -10
+                  }}
+                  className="absolute -left-12 top-[10%] w-[35vw] h-[70vh] opacity-50"
+                >
+                  <Image src="/mockups/iphone_1.png" alt="" fill className="object-contain" priority />
+                </motion.div>
+                
+                <motion.div 
+                  style={{ 
+                    y: useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]),
+                    rotate: 10
+                  }}
+                  className="absolute -right-12 bottom-[10%] w-[35vw] h-[70vh] opacity-50"
+                >
+                  <Image src="/mockups/iphone_2.png" alt="" fill className="object-contain" priority />
+                </motion.div>
+          </div>
+
           <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
             {categories.map((cat, idx) => (
               <Link 
@@ -99,7 +123,7 @@ export default function CollectionPage() {
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
                   </div>
-                  <span className="text-gray-500">02</span>
+                  <span className="text-white">02</span>
                 </div>
 
               </Link>

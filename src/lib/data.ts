@@ -1,12 +1,21 @@
 export const projects = [
   {
     id: "01",
-    slug: "stat-metrix",
-    title: "STAT METRIX",
+    slug: "haus-of-taste",
+    title: "HAUS OF TASTE",
     category: "UX/UI Design",
-    bgText: "BERRY",
+    bgText: "Haus Of Taste",
     bgColor: "#151b22", 
     imgLeftTilted: true,
+    titleImage: "/mockups/hot-logo.png",
+    customBg: "/mockups/hot-bg.png",
+    centerImage: "/mockups/hot-iphone.png",
+    details: {
+      role: "Lead UX/UI Designer",
+      tools: ["Figma", "Adobe CC", "Framer"],
+      year: "2024",
+      platforms: ["iOS", "Android"]
+    }
   },
   {
     id: "02",

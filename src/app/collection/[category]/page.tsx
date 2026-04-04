@@ -2,6 +2,8 @@ import { projects } from "@/lib/data";
 import { notFound } from "next/navigation";
 import CategoryClient from "./category-client";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return [
     { category: "ux-ui-design" },
