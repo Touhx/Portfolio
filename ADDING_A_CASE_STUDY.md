@@ -89,89 +89,81 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Project } from "@/types/project";
+import { p } from "@/lib/base-path";
 
-export default function GreenButcherCaseStudy({ project }: { project: Project }) {
+type MediaSlice = {
+  type: "image" | "video";
+  src: string;
+};
+
+export default function MyProjectCaseStudy({ project }: { project: Project }) {
+  // Add your exported Figma slices here!
+  const caseStudySlices: MediaSlice[] = [
+    // { type: "image", src: p("/case-study/my-project/slice-1.jpg") },
+    // { type: "image", src: p("/case-study/my-project/slice-2.jpg") },
+    // { type: "video", src: p("/case-study/my-project/demo-video.mp4") },
+  ];
+
   return (
     <div
-      className="text-black overflow-x-hidden"
+      className="text-black overflow-x-hidden selection:bg-[#E8380D] selection:text-white bg-[#050505]"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
       `}</style>
 
-      {/* ── HERO ── */}
+      {/* ── SECTION 1: HERO ── */}
       <section
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
         style={{
-          backgroundImage: project.customBg ? `url(${project.customBg})` : "none",
+          backgroundImage: project.customBg ? \`url(\${project.customBg})\` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {/* Back button */}
-        <div className="absolute top-8 left-6 md:left-12 z-50 mix-blend-difference">
-          <Link
-            href="/collection"
-            className="text-white flex items-center gap-2 text-[10px] tracking-widest uppercase border border-white/20 px-4 py-2 rounded-full hover:text-white/70 transition-colors"
-          >
-            <ArrowLeft className="w-3 h-3" /> Back
-          </Link>
+        <div className="absolute top-8 left-6 md:left-12 z-50">
+          <Link href="/collection" className="text-white flex items-center..."><ArrowLeft /> Back</Link>
         </div>
-
-        {/* Ghost bg text */}
-        <motion.div
-          className="absolute whitespace-nowrap z-0 select-none pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <h2
-            className="text-[20vw] font-black uppercase text-transparent tracking-tighter"
-            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.05)" }}
-          >
-            {project.bgText}
-          </h2>
+        <motion.div className="absolute z-0...">
+          <h2 className="text-[20vw]...">{project.bgText}</h2>
         </motion.div>
-
-        {/* Title */}
-        <div className="relative z-20 text-center mix-blend-difference px-12">
-          <motion.h1
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-6xl md:text-[8vw] font-black uppercase tracking-tighter text-white leading-[0.85]"
-          >
-            {project.title}
-          </motion.h1>
+        <div className="relative z-20...">
+          <h1 className="text-6xl...">{project.title}</h1>
         </div>
       </section>
 
-      {/* ── ADD YOUR CASE STUDY SECTIONS BELOW ── */}
-
+      {/* ── SECTION 2: SLICED IMAGE BEHANCE LAYOUT ── */}
+      <section className="relative w-full z-20 flex flex-col items-center bg-[#050505]">
+        {caseStudySlices.length > 0 ? (
+          caseStudySlices.map((slice, index) => (
+            slice.type === "image" ? (
+              <img key={index} src={slice.src} alt={\`Slice \${index + 1}\`} className="w-full h-auto block" />
+            ) : (
+              <video key={index} src={slice.src} className="w-full h-auto block" autoPlay loop muted playsInline />
+            )
+          ))
+        ) : (
+           <div className="w-full h-[60vh] flex items-center justify-center text-white/50 border-t border-white/10">
+              Sliced Images Go Here
+           </div>
+        )}
+      </section>
+      
+      {/* ── SECTION 3: NEXT PROJECT FOOTER ── */}
+      <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
+         <span className="text-[10px] uppercase text-white/40 mb-8 block font-black">Next Story</span>
+         <Link href="/project/next-project" className="group inline-block">
+           <h2 className="text-5xl md:text-[8rem] font-black uppercase text-white hover:text-[#E21E26]">Next Project</h2>
+         </Link>
+      </section>
     </div>
   );
 }
 ```
 
-### Recommended section structure
-
-| Section | Purpose |
-|---------|---------|
-| `SECTION 1` | Hero (use the hero template above) |
-| `SECTION 2` | Intro metadata + large phone/mockup overlay |
-| `SECTION 3` | Problem statement |
-| `SECTION 4` | Research process |
-| `SECTION 5` | Solution / key screens gallery |
-| `SECTION 6` | User persona |
-| `SECTION 7` | User flow |
-| `SECTION 8` | Testing & iteration metrics |
-| `SECTION 9` | Final outcome gallery |
-| `SECTION 10` | Conclusion |
-| `SECTION 11` | Next project footer link |
-
-> See `src/components/haus-of-taste-case-study.tsx` for a complete real-world
-> reference implementation of all these sections.
+### Recommended Structure
+It's now incredibly simple! All you do is export your massive long-scroll case study as image slices from Figma, drop them into a `public/case-study/my-project/` folder, and update the `caseStudySlices` array above. No manual HTML slicing necessary.
 
 ---
 
