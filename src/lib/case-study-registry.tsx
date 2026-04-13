@@ -44,6 +44,9 @@ export const CASE_STUDIES: Record<string, CaseStudyComponent> = {
   "haus-of-taste": makeCaseStudy(
     () => import("@/components/haus-of-taste-case-study")
   ),
+  "bitsync": makeCaseStudy(
+    () => import("@/components/bitsync-case-study")
+  ),
 
   // ── Add future case studies below ────────────────────────────────────────
   // "green-butcher": makeCaseStudy(() => import("@/components/green-butcher-case-study")),

@@ -105,7 +105,7 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
                 {/* Centered Image (Override) */}
                 {project.centerImage && (
                   <motion.div 
-                    className="absolute z-10 w-[280px] md:w-[500px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
+                    className="absolute z-10 w-[322px] md:w-[575px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: "-50%", opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
@@ -114,7 +114,7 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
                   </motion.div>
                 )}
 
-                <div className={`relative z-20 text-center ${project.titleImage ? '' : 'mix-blend-difference'} pointer-events-none flex flex-col items-center px-12`}>
+                <div className={`${project.titlePosition === 'bottom' ? 'absolute bottom-24' : 'relative'} z-20 text-center ${project.titleImage ? '' : 'mix-blend-difference'} pointer-events-none flex flex-col items-center px-12`}>
                   {project.titleImage ? (
                     <motion.div
                       initial={{ scale: 0.9, opacity: 0 }}
