@@ -16,9 +16,18 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }> 
 }) {
   const { slug } = await params;
-  const project = projects.find(p => p.slug === slug);
+  const projectIndex = projects.findIndex(p => p.slug === slug);
   
-  if (!project) return notFound();
+  if (projectIndex === -1) return notFound();
+  
+  const project = { ...projects[projectIndex] };
+  
+  // Calculate next project
+  const nextIndex = (projectIndex + 1) % projects.length;
+  project.nextProject = {
+    slug: projects[nextIndex].slug,
+    title: projects[nextIndex].title,
+  };
   
   return <ProjectClient project={project} />;
 }

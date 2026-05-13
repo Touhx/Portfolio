@@ -47,6 +47,21 @@ export const CASE_STUDIES: Record<string, CaseStudyComponent> = {
   "bitsync": makeCaseStudy(
     () => import("@/components/bitsync-case-study")
   ),
+  "shell": makeCaseStudy(
+    () => import("@/components/shell-case-study")
+  ),
+  "essops": makeCaseStudy(
+    () => import("@/components/essops-case-study")
+  ),
+  "hi-q": makeCaseStudy(
+    () => import("@/components/hi-q-case-study")
+  ),
+  "bubbles": makeCaseStudy(
+    () => import("@/components/bubbles-case-study")
+  ),
+  "one-piece": makeCaseStudy(
+    () => import("@/components/one-piece-case-study")
+  ),
 
   // ── Add future case studies below ────────────────────────────────────────
   // "green-butcher": makeCaseStudy(() => import("@/components/green-butcher-case-study")),

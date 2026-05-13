@@ -18,9 +18,15 @@ export type Project = {
   centerImage?: string;
   /** Optional: SVG/PNG logo used in place of the text title in hero */
   titleImage?: string;
+  /** Optional: Second decorative image in hero (e.g. for Hi Q layout) */
+  secondaryImage?: string;
   titlePosition?: "center" | "bottom";
   imgLeftTilted?: boolean;
   /** Whether a dedicated case-study component exists for this slug */
   layout?: "hero" | "case-study";
   details?: ProjectDetails;
+  nextProject?: {
+    slug: string;
+    title: string;
+  };
 };

@@ -33,17 +33,17 @@ const DARK_NAV = "#1A1E26"; // Figma dark navy for headings & text
 
 export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
   // Array of image slices for your case study layout.
-  const caseStudySlices: MediaSlice[] = [
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (1).jpg") },
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (2).jpg") },
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (3).jpg") },
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (4).jpg") },
-    
-    // Example of how to add a video between 4 and 5!
-    // { type: "video", src: p("/case-study/haus-of-taste/demo-video.mp4") },
-
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (5).jpg") },
-    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1 (6).jpg") },
+  const caseStudySlices = [
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 1.png") },
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 2.png") },
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 3.png") },
+    { 
+      type: "embed", 
+      html: `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1191896393?autoplay=1&loop=1&muted=1&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>` 
+    },
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 4.png") },
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 5.png") },
+    { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 6.png") },
   ];
 
   return (
@@ -147,6 +147,12 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 alt={`Case Study Slice ${index + 1}`} 
                 className="w-full h-auto block select-none pointer-events-none" 
               />
+            ) : slice.type === "embed" ? (
+              <div 
+                key={index} 
+                className="w-full"
+                dangerouslySetInnerHTML={{ __html: slice.html || "" }} 
+              />
             ) : (
               <video
                 key={index}
@@ -174,9 +180,11 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
           ═══════════════════════════════════════════ */}
       <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
         <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-8 block font-black">Next Story</span>
-        <Link href="/project/green-butcher" className="group inline-block">
+        <Link href={`/project/${project.nextProject?.slug || 'one-piece'}`} className="group inline-block">
           <h2 className="text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#E21E26]">
-            Green<br />Butcher
+            {project.nextProject?.title.split(' ').map((word, i) => (
+              <span key={i} className="block">{word}</span>
+            )) || 'One Piece'}
           </h2>
         </Link>
       </section>

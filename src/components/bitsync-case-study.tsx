@@ -24,15 +24,14 @@ const fadeUp: Variants = {
 export default function BitsyncCaseStudy({ project }: BitsyncProps) {
   // Sequential image stack for Bitsync
   const caseStudySlices: MediaSlice[] = [
-    { type: "image", src: p("/case-study/bitsync/bitsync-1.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-2.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-3.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-4.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-5.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-6.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-7.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-8.png") },
-    { type: "image", src: p("/case-study/bitsync/bitsync-9.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 1.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 3.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 4.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 5.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 6.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 7.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 8.png") },
+    { type: "image", src: p("/case-study/bitsync/Bitsync Case study 9.png") },
   ];
 
   return (
@@ -142,9 +141,11 @@ export default function BitsyncCaseStudy({ project }: BitsyncProps) {
           ═══════════════════════════════════════════ */}
       <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
         <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-8 block font-black">Next Story</span>
-        <Link href="/project/haus-of-taste" className="group inline-block">
+        <Link href={`/project/${project.nextProject?.slug || 'shell'}`} className="group inline-block">
           <h2 className="text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#FA0000]">
-            Haus Of<br />Taste
+            {project.nextProject?.title.split(' ').map((word, i) => (
+              <span key={i} className="block">{word}</span>
+            )) || 'Shell'}
           </h2>
         </Link>
       </section>
