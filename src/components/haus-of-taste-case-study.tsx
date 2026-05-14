@@ -48,7 +48,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
 
   return (
     <div
-      className="text-black min-h-screen overflow-x-hidden selection:bg-[#E8380D] selection:text-white bg-[#050505]"
+      className="text-black overflow-x-hidden selection:bg-[#E8380D] selection:text-white bg-[#050505]"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       <style>{`
@@ -145,12 +145,12 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
                 key={index} 
                 src={slice.src} 
                 alt={`Case Study Slice ${index + 1}`} 
-                className="w-full h-auto block select-none" 
+                className="w-full h-auto block select-none pointer-events-none" 
               />
             ) : slice.type === "embed" ? (
               <div 
                 key={index} 
-                className="w-full pointer-events-none"
+                className="w-full"
                 dangerouslySetInnerHTML={{ __html: slice.html || "" }} 
               />
             ) : (

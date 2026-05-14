@@ -121,12 +121,12 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
               key={index} 
               src={slice.src} 
               alt={`Case Study Slice ${index + 1}`} 
-              className="w-full h-auto block select-none" 
+              className="w-full h-auto block select-none pointer-events-none" 
             />
           ) : (
             <div 
               key={index} 
-              className="w-full aspect-video pointer-events-none"
+              className="w-full aspect-video"
               dangerouslySetInnerHTML={{ __html: slice.html || "" }} 
             />
           )

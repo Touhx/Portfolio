@@ -54,7 +54,7 @@ export default function EssopsCaseStudy({ project }: EssopsProps) {
                 key={index} 
                 src={slice.src} 
                 alt={`Case Study Slice ${index + 1}`} 
-                className="w-full h-auto block select-none" 
+                className="w-full h-auto block select-none pointer-events-none" 
               />
             ) : (
               <video
