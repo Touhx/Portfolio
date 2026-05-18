@@ -39,7 +39,8 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
     { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 3.png") },
     { 
       type: "embed", 
-      html: `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1191896393?autoplay=1&loop=1&muted=1&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"></iframe></div>` 
+      html: `<div data-lenis-prevent style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1191896393?autoplay=1&loop=1&muted=1&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"></iframe></div>` 
+
     },
     { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 4.png") },
     { type: "image", src: p("/case-study/haus-of-taste/Desktop Case study 5.png") },
@@ -59,7 +60,7 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
           SECTION 1 — COLLECTION STYLE HERO
           ═══════════════════════════════════════════ */}
       <section
-        className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center bg-[#050505]"
         style={{
           backgroundImage: project.customBg ? `url(${project.customBg})` : 'none',
           backgroundSize: 'cover',

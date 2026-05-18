@@ -47,7 +47,7 @@ export default function BitsyncCaseStudy({ project }: BitsyncProps) {
           SECTION 1 — HERO
           ═══════════════════════════════════════════ */}
       <section
-        className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center bg-[#050505]"
         style={{
           backgroundImage: project.customBg ? `url(${project.customBg})` : 'none',
           backgroundSize: 'cover',

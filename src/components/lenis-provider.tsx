@@ -14,16 +14,24 @@ export default function LenisProvider({
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 1,
       touchMultiplier: 2,
+      // Prevent Lenis from consuming wheel events fired on iframes
+      // (e.g. embedded Vimeo players) which would halt scrolling
+      eventsTarget: document.documentElement,
     });
+
+    let rafId: number;
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      // Cancel the RAF loop BEFORE destroying Lenis so the zombie
+      // loop can't block wheel events on the next mount
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
