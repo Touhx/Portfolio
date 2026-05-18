@@ -20,7 +20,7 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
     { type: "image", src: p("/case-study/one-piece/Frame 2 ( For Animation ).png") },
     { 
       type: "embed", 
-      html: `<iframe title="vimeo-player" src="https://player.vimeo.com/video/878630983?h=c5c1590e3c&autoplay=1&loop=1&muted=1&background=1" width="100%" height="auto" style="aspect-ratio: 16/9;" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>` 
+      html: `<iframe title="vimeo-player" src="https://player.vimeo.com/video/878630983?h=c5c1590e3c&autoplay=1&loop=1&muted=1&background=1" width="100%" height="auto" style="aspect-ratio: 16/9;" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"></iframe>` 
     },
     { type: "image", src: p("/case-study/one-piece/Frame 3 ( For Animation ).png") },
   ];
