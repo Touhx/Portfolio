@@ -9,7 +9,7 @@ export type Project = {
   id: string;
   slug: string;
   title: string;
-  category: "UX/UI Design" | "Brand Design";
+  category: "UX/UI Design" | "Brand Design" | "Web Design";
   bgText?: string;
   bgColor?: string;
   /** Optional: URL to a full-bleed custom background image (collection card + hero) */
