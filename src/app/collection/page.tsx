@@ -21,6 +21,14 @@ const categories = [
     desc: "Brand Identity",
     bgText: "IDENTITY",
     imgLeftTilted: false,
+  },
+  {
+    id: "03",
+    slug: "web-design",
+    title: "WEB DESIGN",
+    desc: "Digital Development",
+    bgText: "WEB",
+    imgLeftTilted: true,
   }
 ];
 
@@ -28,8 +36,8 @@ export default function CollectionPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   
-  // 2 categories = 200vw wide, move -50% to show second
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  // 3 categories = 300vw wide, move -200vw to show third
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-200vw"]);
 
   return (
     <div className="bg-[#050505] min-h-screen">
@@ -42,7 +50,7 @@ export default function CollectionPage() {
         </div>
       </div>
 
-      <div ref={containerRef} className="h-[200vh] relative">
+      <div ref={containerRef} className="h-[300vh] relative">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           
           {/* Floating Background Mockups */}
@@ -68,7 +76,7 @@ export default function CollectionPage() {
                 </motion.div>
           </div>
 
-          <motion.div style={{ x }} className="flex w-[200vw] h-full items-center">
+          <motion.div style={{ x }} className="flex w-[300vw] h-full items-center">
             {categories.map((cat, idx) => (
               <Link 
                 href={`/collection/${cat.slug}`} 
@@ -123,7 +131,7 @@ export default function CollectionPage() {
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
                   </div>
-                  <span className="text-white">02</span>
+                  <span className="text-white">0{categories.length}</span>
                 </div>
 
               </Link>

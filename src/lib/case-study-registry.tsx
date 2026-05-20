@@ -62,6 +62,15 @@ export const CASE_STUDIES: Record<string, CaseStudyComponent> = {
   "one-piece": makeCaseStudy(
     () => import("@/components/one-piece-case-study")
   ),
+  "the-joint": makeCaseStudy(
+    () => import("@/components/the-joint-case-study")
+  ),
+  "restaurant": makeCaseStudy(
+    () => import("@/components/restaurant-case-study")
+  ),
+  "burger-restaurant": makeCaseStudy(
+    () => import("@/components/burger-restaurant-case-study")
+  ),
 
   // ── Add future case studies below ────────────────────────────────────────
   // "green-butcher": makeCaseStudy(() => import("@/components/green-butcher-case-study")),

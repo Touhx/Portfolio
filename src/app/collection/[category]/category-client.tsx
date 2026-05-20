@@ -37,7 +37,7 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
                 href={`/project/${project.slug}`} 
                 key={project.id} 
                 className={`relative w-screen h-full overflow-hidden shrink-0 group cursor-pointer ${
-                  project.slug === 'shell' || project.slug === 'essops' || project.slug === 'hi-q' || project.slug === 'bubbles' || project.slug === 'one-piece'
+                  project.slug === 'shell' || project.slug === 'essops' || project.slug === 'hi-q' || project.slug === 'bubbles' || project.slug === 'one-piece' || project.slug === 'burger-restaurant' || project.slug === 'the-joint'
                     ? 'flex flex-col items-center justify-between py-24 md:py-32' 
                     : 'flex items-center justify-center'
                 } ${project.slug === 'shell' ? 'bg-[#FFD500]' : project.slug === 'one-piece' ? 'bg-[#E21E26]' : ''} `}
@@ -225,6 +225,43 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
                       </div>
                     </div>
                   </>
+                ) : project.slug === 'the-joint' ? (
+                  <>
+                    {/* Header Image (Top) */}
+                    <motion.div
+                      initial={{ y: -50, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      className="absolute top-12 z-30 w-[80vw] md:w-[60vw] max-w-[800px] flex justify-center"
+                    >
+                      <img src={project.titleImage} alt="The Joint Header" className="w-full h-auto" />
+                    </motion.div>
+
+                    {/* Foreground Composition (Text + Pasta) */}
+                    <div className="relative flex items-center justify-center w-full flex-1 min-h-[400px]">
+                      <motion.div
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="relative z-20 w-[95vw] md:w-[85vw] max-w-[1400px] mt-24"
+                      >
+                        <img src={project.centerImage} alt="The Joint Foreground" className="w-full h-auto drop-shadow-2xl" />
+                      </motion.div>
+                    </div>
+                  </>
+                ) : project.slug === 'burger-restaurant' ? (
+                  <>
+                    <div className="relative flex items-center justify-center w-full flex-1 min-h-[400px]">
+                      <motion.div
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="relative z-20 w-[90vw] md:w-[75vw] max-w-[1200px]"
+                      >
+                        <img src={project.titleImage} alt="Burger Restaurant" className="w-full h-auto drop-shadow-2xl" />
+                      </motion.div>
+                    </div>
+                  </>
                 ) : (
                   <>
                     {!project.customBg && <div className="absolute inset-0 bg-black/0 group-hover:bg-white/5 transition-colors duration-700 z-50 pointer-events-none" />}
@@ -242,7 +279,7 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
                     </motion.div>
 
                     {/* Default Left/Right Devices - Hidden if centerImage is present */}
-                    {!project.centerImage && (
+                    {!project.centerImage && project.slug !== 'restaurant' && (
                       <>
                         {/* Left Device (iPhone Mockup) */}
                         <motion.div 

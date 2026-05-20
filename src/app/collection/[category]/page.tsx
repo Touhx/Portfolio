@@ -8,6 +8,7 @@ export function generateStaticParams() {
   return [
     { category: "ux-ui-design" },
     { category: "brand-design" },
+    { category: "web-design" },
   ];
 }
 
@@ -17,6 +18,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const filteredProjects = projects.filter(p => {
     if (category === "ux-ui-design") return p.category === "UX/UI Design";
     if (category === "brand-design") return p.category === "Brand Design";
+    if (category === "web-design") return p.category === "Web Design";
     return false;
   });
 
