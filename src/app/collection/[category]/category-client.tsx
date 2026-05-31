@@ -19,13 +19,67 @@ export default function CategoryClient({ projects, categorySlug }: { projects: a
     <div className="bg-[#050505] min-h-screen">
       
       {/* Back button fixed overlay */}
-      <div className="fixed top-8 left-6 md:left-12 z-50 mix-blend-difference mt-20">
-        <Link href="/collection" className="text-white hover:text-white/70 transition-colors flex items-center gap-2 text-[10px] tracking-widest uppercase border border-white/20 px-4 py-2 rounded-full">
+      <div className="fixed top-8 left-6 md:left-12 z-50 mix-blend-difference mt-16 md:mt-20">
+        <Link href="/collection" className="text-white hover:text-white/70 transition-colors flex items-center gap-2 text-[10px] tracking-widest uppercase border border-white/20 px-4 py-2 rounded-full bg-black/20 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
           <ArrowLeft className="w-3 h-3" /> Back
         </Link>
       </div>
 
-      <div ref={containerRef} className="relative" style={{ height: `${count * 100}vh` }}>
+      {/* ── Mobile: vertical project stack ── */}
+      <div className="md:hidden flex flex-col pt-28">
+        {projects.map((project, i) => (
+          <Link
+            href={`/project/${project.slug}`}
+            key={project.id}
+            className={`relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden px-6 py-20 group ${
+              project.slug === "shell"
+                ? "bg-[#FFD500]"
+                : project.slug === "one-piece"
+                  ? "bg-[#E21E26]"
+                  : ""
+            }`}
+            style={{
+              backgroundImage:
+                project.customBg && project.slug !== "shell"
+                  ? `url(${project.customBg})`
+                  : "none",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {project.titleImage ? (
+              <img
+                src={project.titleImage}
+                alt={project.title}
+                className="relative z-20 w-[70vw] max-w-[320px] h-auto mb-6"
+              />
+            ) : (
+              <h2 className="relative z-20 text-4xl font-black uppercase tracking-tighter text-white text-center leading-[0.85]">
+                {project.title.split(" ").map((word: string, idx: number) => (
+                  <span key={idx} className="block">{word}</span>
+                ))}
+              </h2>
+            )}
+
+            {project.centerImage && (
+              <img
+                src={project.centerImage}
+                alt={project.title}
+                className="relative z-10 w-[55vw] max-w-[280px] h-auto object-contain mt-4"
+              />
+            )}
+
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-40 flex items-center gap-4 text-xs font-medium tracking-widest text-white">
+              <span>0{i + 1}</span>
+              <div className="w-12 h-[1px] bg-white/40" />
+              <span>0{count}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* ── Desktop: horizontal scroll-on-vertical-scroll (unchanged) ── */}
+      <div ref={containerRef} className="hidden md:block relative" style={{ height: `${count * 100}vh` }}>
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           
           <motion.div 

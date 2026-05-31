@@ -70,7 +70,7 @@ export default function BitsyncCaseStudy({ project }: BitsyncProps) {
         {/* Center Mockup */}
         {project.centerImage && (
           <motion.div
-            className="absolute z-10 w-[280px] md:w-[500px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
+            className="absolute z-10 w-[240px] sm:w-[280px] md:w-[500px] aspect-square flex items-center justify-center top-1/2 -translate-y-1/2 pointer-events-none"
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: "-50%", opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -80,13 +80,13 @@ export default function BitsyncCaseStudy({ project }: BitsyncProps) {
         )}
 
         {/* Title/Logo positioned at bottom */}
-        <div className="absolute bottom-24 z-20 text-center pointer-events-none flex flex-col items-center px-12">
+        <div className="absolute bottom-20 sm:bottom-24 z-20 text-center pointer-events-none flex flex-col items-center px-4 sm:px-12">
           {project.titleImage ? (
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="w-[60vw] md:w-[35vw] max-w-[500px]"
+              className="w-[75vw] sm:w-[60vw] md:w-[35vw] max-w-[500px]"
             >
               <img src={project.titleImage} alt={project.title} className="w-full h-auto" />
             </motion.div>
@@ -139,10 +139,10 @@ export default function BitsyncCaseStudy({ project }: BitsyncProps) {
       {/* ═══════════════════════════════════════════
           SECTION 3 — NEXT PROJECT FOOTER
           ═══════════════════════════════════════════ */}
-      <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
+      <section className="py-24 md:py-48 px-4 sm:px-6 text-center bg-[#050505] border-t border-white/5">
         <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-8 block font-black">Next Story</span>
         <Link href={`/project/${project.nextProject?.slug || 'shell'}`} className="group inline-block">
-          <h2 className="text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#FA0000]">
+          <h2 className="text-4xl sm:text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#FA0000]">
             {project.nextProject?.title.split(' ').map((word, i) => (
               <span key={i} className="block">{word}</span>
             )) || 'Shell'}

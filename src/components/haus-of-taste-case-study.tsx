@@ -179,10 +179,10 @@ export default function HausOfTasteCaseStudy({ project }: HausOfTasteProps) {
       {/* ═══════════════════════════════════════════
           SECTION 3 — NEXT PROJECT FOOTER
           ═══════════════════════════════════════════ */}
-      <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
+      <section className="py-24 md:py-48 px-4 sm:px-6 text-center bg-[#050505] border-t border-white/5">
         <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-8 block font-black">Next Story</span>
         <Link href={`/project/${project.nextProject?.slug || 'one-piece'}`} className="group inline-block">
-          <h2 className="text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#E21E26]">
+          <h2 className="text-4xl sm:text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#E21E26]">
             {project.nextProject?.title.split(' ').map((word, i) => (
               <span key={i} className="block">{word}</span>
             )) || 'One Piece'}

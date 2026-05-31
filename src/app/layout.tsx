@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} min-h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white selection:bg-white selection:text-black">
+      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white selection:bg-white selection:text-black overflow-x-hidden">
         <LenisProvider>
           <SiteHeader />
           <main className="flex-1">{children}</main>

@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 
 export default function LenisProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -17,7 +22,11 @@ export default function LenisProvider({
       // Prevent Lenis from consuming wheel events fired on iframes
       // (e.g. embedded Vimeo players) which would halt scrolling
       eventsTarget: document.documentElement,
+      content: document.body,
+      autoResize: true,
     });
+
+    lenisRef.current = lenis;
 
     let rafId: number;
 
@@ -28,13 +37,44 @@ export default function LenisProvider({
 
     rafId = requestAnimationFrame(raf);
 
+    const resize = () => lenis.resize();
+
+    window.addEventListener("load", resize);
+    document.fonts?.ready.then(resize);
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(document.body);
+
+    // Case-study images load after Lenis init; recalculate scroll bounds
+    const onImageLoad = (event: Event) => {
+      if (event.target instanceof HTMLImageElement) {
+        resize();
+      }
+    };
+    document.addEventListener("load", onImageLoad, true);
+
     return () => {
-      // Cancel the RAF loop BEFORE destroying Lenis so the zombie
-      // loop can't block wheel events on the next mount
+      window.removeEventListener("load", resize);
+      document.removeEventListener("load", onImageLoad, true);
+      resizeObserver.disconnect();
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Recalculate scroll height after client-side navigation and layout shifts
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+
+    lenis.resize();
+    const timers = [100, 400, 1000].map((delay) =>
+      window.setTimeout(() => lenis.resize(), delay)
+    );
+
+    return () => timers.forEach(clearTimeout);
+  }, [pathname]);
 
   return <>{children}</>;
 }

@@ -19,6 +19,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Lenis needs html/body to grow with content */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+/* Prevent horizontal bleed on mobile without blocking vertical scroll */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Custom Selection */
 ::selection {
   background-color: rgba(255, 255, 255, 0.99);

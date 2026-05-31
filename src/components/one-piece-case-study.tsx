@@ -31,7 +31,7 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
           SECTION 1 — HERO (RE-CREATED FROM COLLECTION)
           ═══════════════════════════════════════════ */}
       <section 
-        className="relative w-full h-screen flex flex-col items-center justify-center bg-[#E21E26]"
+        className="relative w-full min-h-[100svh] md:h-screen flex flex-col items-center justify-center bg-[#E21E26]"
         style={{ 
           backgroundImage: project.customBg ? `url(${project.customBg})` : 'none',
           backgroundSize: 'cover',
@@ -43,7 +43,7 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute top-36 left-12 z-30 w-[40vw] md:w-[25vw] max-w-[350px]"
+          className="absolute top-28 sm:top-32 md:top-36 left-4 sm:left-6 md:left-12 z-30 w-[50vw] sm:w-[40vw] md:w-[25vw] max-w-[350px]"
         >
           <img src={project.titleImage} alt="One Piece Logo" className="w-full h-auto" />
         </motion.div>
@@ -53,7 +53,7 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="absolute bottom-12 left-12 z-30 w-[40vw] md:w-[25vw] max-w-[350px]"
+          className="absolute bottom-8 sm:bottom-12 left-4 sm:left-6 md:left-12 z-30 w-[50vw] sm:w-[40vw] md:w-[25vw] max-w-[350px]"
         >
           <img src={project.secondaryImage} alt="Adidas Logo" className="w-full h-auto" />
         </motion.div>
@@ -93,7 +93,7 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-12 right-12 z-30"
+          className="absolute bottom-8 sm:bottom-12 right-4 sm:right-12 z-30"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
@@ -136,10 +136,10 @@ export default function OnePieceCaseStudy({ project }: OnePieceProps) {
       {/* ═══════════════════════════════════════════
           SECTION 3 — NEXT PROJECT FOOTER
           ═══════════════════════════════════════════ */}
-      <section className="py-32 md:py-48 px-6 text-center bg-[#050505] border-t border-white/5">
+      <section className="py-24 md:py-48 px-4 sm:px-6 text-center bg-[#050505] border-t border-white/5">
         <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-8 block font-black">Next Story</span>
         <Link href={`/project/${project.nextProject?.slug || 'bitsync'}`} className="group inline-block">
-          <h2 className="text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#E21E26]">
+          <h2 className="text-4xl sm:text-5xl md:text-[8rem] font-black uppercase tracking-tighter text-white leading-none transition-colors duration-500 group-hover:text-[#E21E26]">
             {project.nextProject?.title.split(' ').map((word, i) => (
               <span key={i} className="block">{word}</span>
             )) || 'Bitsync'}

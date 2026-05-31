@@ -42,15 +42,53 @@ export default function CollectionPage() {
   return (
     <div className="bg-[#050505] min-h-screen">
       
-      {/* Category Indicators (Fixed) */}
-      <div className="fixed top-32 left-6 md:left-12 z-40 flex gap-4 mix-blend-difference pb-8">
+      {/* Category Indicators (Fixed) — desktop only */}
+      <div className="hidden md:flex fixed top-32 left-6 md:left-12 z-40 gap-4 mix-blend-difference pb-8">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-white" />
           <span className="uppercase text-[10px] tracking-widest text-white font-bold">Categories</span>
         </div>
       </div>
 
-      <div ref={containerRef} className="h-[300vh] relative">
+      {/* ── Mobile: vertical category stack ── */}
+      <div className="md:hidden flex flex-col pt-24">
+        {categories.map((cat) => (
+          <Link
+            href={`/collection/${cat.slug}`}
+            key={cat.id}
+            className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden px-6 py-20 group"
+          >
+            <div className="absolute whitespace-nowrap z-0 select-none pointer-events-none">
+              <h2
+                className="text-[28vw] font-black uppercase text-transparent tracking-tighter"
+                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.05)" }}
+              >
+                {cat.bgText}
+              </h2>
+            </div>
+
+            <div className="relative z-20 text-center flex flex-col items-center">
+              <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter text-white leading-[0.85]">
+                {cat.title.split(" ").map((word, i) => (
+                  <span key={i} className="block">{word}</span>
+                ))}
+              </h1>
+              <div className="mt-6 inline-flex items-center gap-3 bg-white text-black px-6 py-2 rounded-full">
+                <span className="text-xs font-bold tracking-widest uppercase">{cat.desc}</span>
+              </div>
+            </div>
+
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-40 flex items-center gap-4 text-xs font-medium tracking-widest text-white">
+              <span>{cat.id}</span>
+              <div className="w-12 h-[1px] bg-white/40" />
+              <span>0{categories.length}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* ── Desktop: horizontal scroll-on-vertical-scroll (unchanged) ── */}
+      <div ref={containerRef} className="hidden md:block h-[300vh] relative">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           
           {/* Floating Background Mockups */}
